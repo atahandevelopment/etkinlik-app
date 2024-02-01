@@ -10,6 +10,13 @@ import categoryRouter from './routes/categoryRoute.js';
 import placesListRoute from './routes/placesListRoute.js';
 import searchServiceRoute from './routes/searchServiceRoute.js';
 import { startDataSync } from './config/dataSync.js';
+import settingsRouter from "./routes/settingsRouter.js";
+import partnerRouter from "./routes/partnerRouter.js";
+import bannerRouter from "./routes/bannerRouter.js";
+import messageRouter from "./routes/messageRouter.js";
+import blogRouter from "./routes/blogRouter.js";
+import policieRouter from "./routes/policieRouter.js";
+
 
 dotenv.config();
 
@@ -28,6 +35,15 @@ app.use(`${apiSecret}/format-list`, formatListRouter);
 app.use(`${apiSecret}/categories`, categoryRouter);
 app.use(`${apiSecret}/places`, placesListRoute);
 app.use(`${apiSecret}/search`, searchServiceRoute);
+app.use(`${apiSecret}/partner`, partnerRouter);
+app.use(`${apiSecret}/banners`, bannerRouter);
+app.use(`${apiSecret}/customer-message`, messageRouter);
+app.use(`${apiSecret}/site-settings`, settingsRouter);
+app.use(`${apiSecret}/secure-policies`, policieRouter);
+app.use(`${apiSecret}/blogs`, blogRouter);
+
+
+
 
 
 const PORT = process.env.PORT || 5000;
@@ -38,4 +54,4 @@ const server = app.listen(PORT, () => {
             .catch(err => console.log(err));
 })
 
-// startDataSync();
+startDataSync();
