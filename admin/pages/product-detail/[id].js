@@ -1,12 +1,11 @@
-import MetaHead from "@/components/MetaHead";
 import { GetAllProductsService, UpdateProductById } from "@/services/products";
-import { useState, useEffect } from "react";
-import { Button, Input, TextField } from "@mui/material";
+import { useState } from "react";
+import { Button, TextField } from "@mui/material";
 import { errorToastMessage, succesToastMessage } from "@/components/toastify";
 import { TiTick } from "react-icons/ti";
 import { useForm } from "react-hook-form";
-import { RxHamburgerMenu } from "react-icons/rx";
-import MobileSidebar from "@/components/MobileSidebar";
+import { useDispatch } from "react-redux";
+import { getTitle } from "@/store/meta-title";
 
 export async function getServerSideProps(context) {
   let productData = "";
@@ -24,12 +23,13 @@ export async function getServerSideProps(context) {
 }
 
 export default function ProductDetail(props) {
-  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [productInfo, setProductInfo] = useState(props.productData[0]);
   const [imageGallery, setImageGallery] = useState(productInfo.gallery || []);
   const [selectedImage, setSelectedImage] = useState("");
   const [onHover, setOnHover] = useState(null);
   const { setValue, register, handleSubmit } = useForm();
+  const dispatch = useDispatch();
+  dispatch(getTitle(productInfo?.title));
 
   // Kapak Fotoğrafı Ayarlama işlevi
   const updateProductImage = (imageId) => {
@@ -75,23 +75,6 @@ export default function ProductDetail(props) {
 
   return (
     <div className="max-sm:flex max-sm:flex-wrap max-sm:justify-center">
-      <MetaHead title={productInfo?.title} />
-      {mobileSidebarOpen ? (
-        <div className="w-full flex justify-start items-start">
-          <MobileSidebar mobileSidebarOpen={mobileSidebarOpen} setMobileSidebarOpen={setMobileSidebarOpen} />
-        </div>
-      ) : (
-        <></>
-      )}
-      <div className="w-11/12 h-10 lg:hidden flex justify-start items-center">
-        <RxHamburgerMenu
-          onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
-          className={`text-black font-semibold size-5`}
-        />
-      </div>
-      <div className="header">
-        <h1>{productInfo?.title}</h1>
-      </div>
       <div className="w-full h-auto max-sm:w-11/12 max-sm:flex max-sm:flex-wrap">
         <div className="w-full h-30 flex flex-wrap justify-start items-center max-sm:justify-center gap-5">
           {imageGallery ? (

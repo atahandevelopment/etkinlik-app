@@ -9,7 +9,7 @@ export const getCategories = async (queries) => {
 }
 
 export const getAllCategories = async (id) => {
-    let url = "/categories/all";
+    let url = "/categories";
 
     if(id) {
         url += '?parent=' + id;

@@ -6,11 +6,10 @@ import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import { Checkbox, Select, TextField } from "@mui/material";
 import { IoCloseSharp } from "react-icons/io5";
-import { useEffect, useState } from "react";
-import { UpdateCategory, addCategoryService } from "@/services/categories";
+import { useContext, useEffect, useState } from "react";
 import { errorToastMessage, succesToastMessage } from "@/components/toastify";
-import MenuItem from "@mui/material/MenuItem";
 import { UpdateBannerInfo } from "@/services/banners";
+import BannerContext from "../context/BannerContext";
 
 const style = {
   position: "absolute",
@@ -24,8 +23,9 @@ const style = {
   p: 4,
 };
 
-export default function EditBanner(props) {
-  const { handleClose, open, existingData, setBannerInfo } = props;
+export default function EditBanner() {
+  const { handleClose, open, existingData, setBannerInfo } =
+    useContext(BannerContext);
   const { control, setValue, handleSubmit } = useForm();
   useEffect(() => {
     setValue("title", existingData?.title);
@@ -38,7 +38,6 @@ export default function EditBanner(props) {
       const response = await UpdateBannerInfo(existingData?._id, data);
       if (response.status === 200) {
         const newData = response?.data?.data;
-        console.log(newData)
         succesToastMessage("Banner bilgileri güncellendi", 1500, "top-right");
         setBannerInfo(newData);
         handleClose();

@@ -15,7 +15,7 @@ const router = express.Router();
 
 router.post('/register', async (req, res) => {
 try {
-    const { fullname, email, password } = req.body;
+    const { fullname, email, password, role } = req.body;
     const userExist = await User.findOne({email: email});
 
     if (userExist) return res.send({ message: 'Bu maile sahip başka bir kullanıcı var. Lütfen başka bir mail ile kayıt olmayı deneyiniz.' });
@@ -24,6 +24,7 @@ try {
     const createUser = await User.create({
         fullname,
         email,
+        role,
         password: hashedPassword
     });
 
@@ -64,8 +65,9 @@ router.post('/login', async (req, res) => {
 
 router.get('/get-me', async (req, res) => {
     try {
-        const { userId } = req.query;
-        const findUser = await User.findOne({ _id: userId }, { password: 0 });
+        const { id } = req.query;
+        const findUser = await User.findOne({ _id: id }, { password: 0 });
+        console.log(findUser);
         
         if( !findUser) return res.status(400).json({ message: 'Kullanıcı bulunamadı.' });
 

@@ -1,4 +1,3 @@
-import MetaHead from "@/components/MetaHead";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { getBannersService } from "@/services/banners";
 import BannerTable from "./components/BannerTable";
@@ -6,6 +5,9 @@ import { useState } from "react";
 import { Button } from "@mui/material";
 import { BsPlus } from "react-icons/bs";
 import AddAndEditBanner from "./components/AddAndEditBanner";
+import { useDispatch } from "react-redux";
+import { getTitle } from "@/store/meta-title";
+import BannerManage from "./context/BannerManangeContext";
 
 export async function getServerSideProps() {
   let banners = [];
@@ -26,20 +28,29 @@ export default function BannerYonetimi(props) {
   const [bannerList, setBannerList] = useState(props.banners || []);
   const [selectedTab, setSelectedTab] = useState("");
   const [open, setOpen] = useState(false);
-  const siteHead = "Banner Yönetimi";
+  const dispatch = useDispatch();
+  dispatch(getTitle("Banner Yönetimi"));
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const bannerManageProps = {
+    bannerList,
+    setBannerList,
+    open,
+    setOpen,
+    selectedTab,
+    handleClose,
+    setSelectedTab,
+    handleOpen,
+    banners: bannerList,
+  };
+
   return (
-    <div className="products-container">
-      <AddAndEditBanner
-        open={open}
-        setOpen={setOpen}
-        selectedTab={selectedTab}
-        handleClose={handleClose}
-      />
-      <MetaHead title={siteHead} />
-      <h1>Banner Yönetimi</h1>
+    <BannerManage.Provider
+      value={bannerManageProps}
+      className="products-container"
+    >
+      <AddAndEditBanner />
       <div className="button-groups">
         <Button
           variant="outlined"
@@ -56,12 +67,12 @@ export default function BannerYonetimi(props) {
       </div>
       {bannerList.length > 0 ? (
         <div className="product-list">
-          <BannerTable setSelectedTab={setSelectedTab} banners={bannerList} />
+          <BannerTable />
         </div>
       ) : (
         <></>
       )}
-    </div>
+    </BannerManage.Provider>
   );
 }
 

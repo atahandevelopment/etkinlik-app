@@ -40,7 +40,7 @@ export default function ProductTable({ products }) {
               <FiTrash className="size-5" />
             </button>
             <Link href={"/product-detail/" + params.row._id}>
-              <CiRead />
+              <CiRead className="size-5" />
             </Link>
             <button>
               <FiEdit className="size-5" />
@@ -52,7 +52,6 @@ export default function ProductTable({ products }) {
   ];
   return (
     <DataGrid
-      headerClassName="product-table-header"
       rows={products}
       columns={columns}
       getRowId={(row) => row._id}

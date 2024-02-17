@@ -2,7 +2,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { FiEdit, FiTrash } from "react-icons/fi";
 import Link from "next/link";
 import { TbFolderSymlink } from "react-icons/tb";
-import { Popover, Tooltip } from "@mui/material";
+import { Tooltip } from "@mui/material";
 import { useContext } from "react";
 import CategoryContext from "../contexts/CategoryContext";
 
@@ -12,18 +12,25 @@ export default function CategoryTable() {
   const columns = [
     { field: "_id", headerName: "ID", width: 400 },
     {
-      field: "label",
+      field: "name",
       headerName: "Kategori Adı",
       description: "Kategori İsimleri",
       sortable: true,
       width: 300,
     },
     {
-      field: "parent.label",
+      field: "slug",
+      headerName: "Kategori Slug",
+      description: "Kategori slug'ı",
+      sortable: true,
+      width: 300,
+    },
+    {
+      field: "parent.name",
       headerName: "Üst Kategori",
       description: "Hangi Kategorinin altında olduğunu gösterir",
       width: 300,
-      valueGetter: (params) => params.row.parent?.label || "",
+      valueGetter: (params) => params.row?.parent?.name || "",
     },
     {
       headerName: "İşlemler",
@@ -61,14 +68,24 @@ export default function CategoryTable() {
       },
     },
   ];
+
+  const tableProps = {
+    rows: categories,
+    columns: columns,
+    pageSize: 10,
+    pageSizeOptions: [5, 10, 50, 100],
+    checkboxSelection: true,
+    getRowId: (row) => row?._id,
+    initialState: {
+      pagination: {
+        paginationModel: { pageSize: 10, page: 0 }
+      }
+    }
+  }
   return (
     <>
       <DataGrid
-        rows={categories}
-        columns={columns}
-        pageSize={10}
-        checkboxSelection
-        getRowId={(row) => row._id}
+        {...tableProps}
       />
     </>
   );

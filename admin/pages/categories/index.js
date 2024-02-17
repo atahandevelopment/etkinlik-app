@@ -3,12 +3,13 @@ import { Button } from "@mui/material";
 import { BsPlus } from "react-icons/bs";
 import { useState } from "react";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
-import MetaHead from "@/components/MetaHead";
 import AddAndEditCategory from "./components/AddAndEditCategory";
 import CategoryTable from "./components/CategoryTable";
 import Swal from "sweetalert2";
 import { succesToastMessage } from "@/components/toastify";
 import CategoryContext from "./contexts/CategoryContext";
+import { useDispatch } from "react-redux";
+import { getTitle } from "@/store/meta-title";
 
 export const getServerSideProps = async () => {
   let data = [];
@@ -25,7 +26,9 @@ export const getServerSideProps = async () => {
 };
 
 export default function Categories(props) {
-  const siteHead = "Kategori Yönetimi";
+  console.log(props.categories)
+  const dispatch = useDispatch();
+  dispatch(getTitle("Kategori Yönetimi"));
   const [categories, setCategories] = useState(
     props.categories ? props.categories : []
   );
@@ -84,11 +87,7 @@ export default function Categories(props) {
 
   return (
     <CategoryContext.Provider value={categoryProps}>
-      <MetaHead title={siteHead} />
       <AddAndEditCategory />
-      <div className="header">
-        <h1>Kategori Yönetimi</h1>
-      </div>
       <div className="button-field">
         <Button
           variant="outlined"

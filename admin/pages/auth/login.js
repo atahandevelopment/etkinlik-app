@@ -6,11 +6,13 @@ import Link from "next/link";
 import { succesToastMessage, errorToastMessage } from "@/components/toastify";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import MetaHead from "@/components/MetaHead";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { getTitle } from "@/store/meta-title";
 
 function Login() {
-  const siteHead = "Admin Giriş";
+  const dispatch = useDispatch();
+  dispatch(getTitle('Admin Giriş'));
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -36,7 +38,6 @@ function Login() {
 
   return (
     <div className="login-page">
-      <MetaHead title={siteHead} />
       <motion.form
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}

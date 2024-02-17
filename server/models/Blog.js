@@ -5,6 +5,10 @@ const blogSchema = mongoose.Schema({
         type: String,
         required:true
     },
+    image: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Image'
+    },
     description: {
         type: String,
     }

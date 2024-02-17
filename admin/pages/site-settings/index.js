@@ -1,7 +1,10 @@
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { getSiteSettings } from "@/services/site-settings";
+import { getTitle } from "@/store/meta-title";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import PanelHeader from "@/components/PanelHeader";
 
 export const getServerSideProps = async () => {
   let siteSettings = [];
@@ -16,6 +19,9 @@ export const getServerSideProps = async () => {
   };
 };
 export default function SiteSettings(props) {
+  const dispatch = useDispatch();
+  dispatch(getTitle("Site Ayarları"));
+  const panelHeader = useSelector((state) => state.metaTitle.title);
   const {
     register,
     handleSubmit,
@@ -25,7 +31,6 @@ export default function SiteSettings(props) {
   const [siteSettings, setSiteSettings] = useState(
     props.siteSettings ? props.siteSettings.data[0] : []
   );
-  console.log(siteSettings);
 
   useEffect(() => {
     setValue("instagram", siteSettings.instagram);
@@ -36,10 +41,11 @@ export default function SiteSettings(props) {
     setValue("address", siteSettings.tax_informations.address);
     setValue("district", siteSettings.tax_informations.district);
     setValue("city", siteSettings.tax_informations.city);
-    setValue("tax_administration", siteSettings.tax_informations.tax_administration);
+    setValue(
+      "tax_administration",
+      siteSettings.tax_informations.tax_administration
+    );
     setValue("tax_no", siteSettings.tax_informations.tax_no);
-
-
   }, [siteSettings, setValue]);
 
   const onSubmit = (data) => {
@@ -47,9 +53,7 @@ export default function SiteSettings(props) {
   };
   return (
     <>
-      <div className="header">
-        <h1>Site Ayarları</h1>
-      </div>
+      <PanelHeader header={panelHeader} />
       <div className="w-full h-full">
         <form onSubmit={handleSubmit(onSubmit)} className="site-settings-form">
           <div className="w-11/12 m-2 gap-6 flex flex-row justify-between items-start">

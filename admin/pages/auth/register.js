@@ -6,12 +6,15 @@ import { RegisterService } from "@/services/auth";
 import { useRouter } from "next/router";
 import { errorToastMessage, succesToastMessage } from "@/components/toastify";
 import { motion } from "framer-motion";
+import { getTitle } from "@/store/meta-title";
+import { useDispatch } from "react-redux";
 
 function Register() {
-  const defaultReferansKod = "dream-telecom-secret";
+  const dispatch = useDispatch();
+  dispatch(getTitle('Admin Kayıt'));
+  const defaultReferansKod = "events-app-admin-secret";
   const [userData, setUserData] = useState({
-    first_name: "",
-    last_name: "",
+    fullname: "",
     email: "",
     referans_kod: "",
     password: "",
@@ -51,20 +54,11 @@ function Register() {
         <label className="text-2xl font-bold">Kullanıcı Kayıt</label>
         <TextField
           required
-          label="İsim"
+          label="Tam İsim"
           type="text"
-          value={userData.first_name}
+          value={userData.fullname}
           onChange={(e) =>
-            setUserData({ ...userData, first_name: e.target.value })
-          }
-        />
-        <TextField
-          required
-          label="Soyisim"
-          type="text"
-          value={userData.last_name}
-          onChange={(e) =>
-            setUserData({ ...userData, last_name: e.target.value })
+            setUserData({ ...userData, fullname: e.target.value })
           }
         />
         <TextField

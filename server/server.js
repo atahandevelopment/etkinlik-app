@@ -6,7 +6,7 @@ import userRouter from './routes/userRouter.js';
 import eventRouter from './routes/eventRouter.js';
 import venueList from './routes/venueList.js';
 import formatListRouter from './routes/formatListRouter.js';
-import categoryRouter from './routes/categoryRoute.js';
+import categoryRoute from './routes/categoryRoute.js';
 import placesListRoute from './routes/placesListRoute.js';
 import searchServiceRoute from './routes/searchServiceRoute.js';
 import { startDataSync } from './config/dataSync.js';
@@ -32,7 +32,7 @@ app.use(`${apiSecret}/users`, userRouter);
 app.use(`${apiSecret}/events`, eventRouter);
 app.use(`${apiSecret}/venues`, venueList);
 app.use(`${apiSecret}/format-list`, formatListRouter);
-app.use(`${apiSecret}/categories`, categoryRouter);
+app.use(`${apiSecret}/categories`, categoryRoute);
 app.use(`${apiSecret}/places`, placesListRoute);
 app.use(`${apiSecret}/search`, searchServiceRoute);
 app.use(`${apiSecret}/partner`, partnerRouter);
@@ -54,4 +54,4 @@ const server = app.listen(PORT, () => {
             .catch(err => console.log(err));
 })
 
-startDataSync();
+// startDataSync();

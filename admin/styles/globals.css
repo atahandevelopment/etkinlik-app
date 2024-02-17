@@ -7,7 +7,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
 }
 
 body {
@@ -15,8 +15,9 @@ body {
 }
 
 .container {
-  @apply w-full h-screen
+  @apply w-full h-screen ;
 }
+
 
 .navbar {
   @apply w-full flex flex-row h-16 bg-black
@@ -27,7 +28,7 @@ body {
 }
 
 .show-sidebar {
-  @apply text-black;
+  @apply text-white bg-blue-800;
   width: 300px;
   box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
 }
@@ -63,7 +64,6 @@ body {
   top: 0px;
   z-index: 11;
   height: 10%;
-  background-color: #fff;
 }
 .hidden-sidebar {
   @apply w-14 max-h-full text-black;
@@ -91,7 +91,7 @@ body {
 }
 
 .panel {
-  @apply flex flex-col justify-between items-center m-2 py-2 rounded-md;
+  @apply flex flex-col max-h-screen justify-between items-center m-2 py-2 rounded-md;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: 100%;
   overflow-x: hidden;
@@ -134,11 +134,19 @@ body {
 }
 
 .product-table-header {
-  background-color: aqua;
+  @apply bg-blue-200
 }
 
 .kapak {
   @apply text-red-700;
   position: absolute;
   font-size: x-large;
+}
+
+.css-yrdy0g-MuiDataGrid-columnHeaderRow {
+  @apply bg-blue-100;
+}
+
+.MuiDataGrid-footerContainer{
+ @apply bg-blue-100
 }

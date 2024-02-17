@@ -17,11 +17,10 @@ export const authOptions = {
         if (!user) {
           throw new Error("User not found");
         }
-        
-        const accessToken = user.data.data.access;
-        const refreshToken = user.data.data.refresh;
+        const accessToken = user.data.access;
+        const refreshToken = user.data.refresh;
         const decoded = await jwtDecode(accessToken);
-        const userId = decoded.id;
+        const userId = decoded.userId;
         const getUser = await GetMe(userId);
         const currentUser = getUser.data.data;
 
