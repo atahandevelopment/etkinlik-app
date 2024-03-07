@@ -26,7 +26,6 @@ export const getServerSideProps = async () => {
 };
 
 export default function Categories(props) {
-  console.log(props.categories)
   const dispatch = useDispatch();
   dispatch(getTitle("Kategori Yönetimi"));
   const [categories, setCategories] = useState(

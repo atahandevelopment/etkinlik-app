@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import redis from 'redis';
 import userRouter from './routes/userRouter.js';
 import eventRouter from './routes/eventRouter.js';
 import venueList from './routes/venueList.js';
@@ -52,6 +53,6 @@ const server = app.listen(PORT, () => {
     mongoose.connect(process.env.EVENT_APP_DB_URL)
         .then(() => console.log('Mongodb bağlantısı başarılı.' + `${PORT}'inci portta dinliyor.`))
             .catch(err => console.log(err));
-})
+});
 
 // startDataSync();
