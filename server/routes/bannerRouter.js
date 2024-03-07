@@ -6,7 +6,7 @@ import Images from "../Models/Images.js";
 
 // Firebase konfigürasyon bilgilerini içe aktarın
 import { firebaseConfig } from "../config/firebase.js";
-import Banner from "../models/Banner.js";
+import Banner from "../Models/Banner.js";
 
 // Express Router oluşturun
 const router = express.Router();

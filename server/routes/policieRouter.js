@@ -5,7 +5,7 @@ import multer from "multer";
 import Images from "../Models/Images.js";
 // Firebase konfigürasyon bilgilerini içe aktarın
 import { firebaseConfig } from "../config/firebase.js";
-import Policies from "../models/Policies.js";
+import Policies from "../Models/Policies.js";
 
 // Express Router oluşturun
 const router = express.Router();
