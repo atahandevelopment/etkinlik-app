@@ -1,6 +1,6 @@
 import express from "express";
-import Settings from "../Models/Settings.js";
-import Banks from "../Models/Banks.js";
+import Settings from "../models/Settings.js";
+import Banks from "../models/Banks.js";
 
 const router = express.Router();
 

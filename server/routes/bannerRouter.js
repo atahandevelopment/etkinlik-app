@@ -2,11 +2,11 @@ import { initializeApp } from "firebase/app";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import express from "express";
 import multer from "multer";
-import Images from "../Models/Images.js";
+import Images from "../models/images.js";
 
 // Firebase konfigürasyon bilgilerini içe aktarın
 import { firebaseConfig } from "../config/firebase.js";
-import Banner from "../Models/Banner.js";
+import Banner from "../models/Banner.js";
 
 // Express Router oluşturun
 const router = express.Router();

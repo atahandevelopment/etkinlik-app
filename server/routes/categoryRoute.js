@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import Categories from "../Models/Categories.js";
+import Categories from "../models/Categories.js";
 import { redisClient } from "../config/redis.js";
 
 dotenv.config();

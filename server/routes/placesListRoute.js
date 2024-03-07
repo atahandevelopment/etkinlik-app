@@ -1,9 +1,9 @@
 import { axiosInstance } from "../config/axiosInstance.js";
 import express from "express";
 import dotenv from "dotenv";
-import Cities from "../Models/Cities.js";
-import Districts from "../Models/Districts.js";
-import Neighborhoods from "../Models/Neighborhoods.js";
+import Cities from "../models/Cities.js";
+import Districts from "../models/Districts.js";
+import Neighborhoods from "../models/Neighborhoods.js";
 
 dotenv.config();
 

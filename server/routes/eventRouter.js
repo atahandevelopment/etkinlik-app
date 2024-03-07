@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import Events from "../Models/Events.js";
+import Events from "../models/Events.js";
 import { redisClient } from "../config/redis.js";
 
 dotenv.config();
