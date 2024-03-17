@@ -1,10 +1,15 @@
 module.exports = {
   content: [
-    './pages/**/*.{html,js}',
+    './screens/**/*.{html,js}',
     './components/**/*.{html,js}',
+    './assets/**/*.{png,ttf}'
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'montserrat': ['Montserrat', 'sans-serif'],
+      }
+    },
   },
   plugins: [],
   corePlugins: require('tailwind-rn/unsupported-core-plugins'),

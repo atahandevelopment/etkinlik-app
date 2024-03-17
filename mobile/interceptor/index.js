@@ -1,8 +1,8 @@
 import axios from "axios";
-// import { PUBLIC_URL } from "@env";
+import { PUBLIC_URL } from "@env";
 
 const api = axios.create({
-  baseURL: "http://172.21.208.1:5000/api/v1",
+  baseURL: "http://3.65.224.184/api/v1/",
 });
 
 

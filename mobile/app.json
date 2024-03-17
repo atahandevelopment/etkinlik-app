@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "mobile",
-    "slug": "mobile",
-    "version": "1.0.0",
+    "name": "Aktivport",
+    "slug": "aktivport",
+    "version": "1.0.1",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/aktivport.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/aktivport.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FF2D2D"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -19,12 +19,33 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "foregroundImage": "./assets/aktivport.png",
+        "backgroundColor": "#FF2D2D"
+      },
+      "package": "com.atahandevelopment.aktivport"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./assets/aktivport.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1670593d-d795-4473-9062-407e0f360c4c"
+      }
+    },
+    "plugins": [
+      [
+          "expo-build-properties", {
+          "android": {
+            "usesCleartextTraffic": true
+          }
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Aktivport isimli uygulama kamera erişimi için izin istiyor."
+        }
+      ]
+    ]
   }
 }
