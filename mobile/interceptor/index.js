@@ -2,7 +2,7 @@ import axios from "axios";
 import { PUBLIC_URL } from "@env";
 
 const api = axios.create({
-  baseURL: "http://3.65.224.184/api/v1/",
+  baseURL: "https://a7cf-176-33-242-250.ngrok-free.app/api/v1/",
 });
 
 

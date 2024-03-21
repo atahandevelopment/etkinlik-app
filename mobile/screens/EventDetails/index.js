@@ -48,8 +48,9 @@ const EventDetails = (props) => {
 
   if(loading) {
     return (
-      <View style={tailwind("w-full h-auto flex justify-center items-center")}>
-        <ActivityIndicator />
+      <View style={tailwind("w-full h-full flex flex-col justify-center gap-4 items-center")}>
+        <ActivityIndicator color="#FF2D2D" />
+        <Text>Yükleniyor...</Text>
       </View>
     )
   }

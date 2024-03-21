@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/aktivport.png",
       "resizeMode": "contain",
-      "backgroundColor": "#FF2D2D"
+      "backgroundColor": "#FFFFFF"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -20,7 +20,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/aktivport.png",
-        "backgroundColor": "#FF2D2D"
+        "backgroundColor": "#FFFFFF"
       },
       "package": "com.atahandevelopment.aktivport"
     },
